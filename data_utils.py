@@ -54,7 +54,7 @@ def matplotlib_imshow(img, one_channel=False):
     else:
         plt.imshow(np.transpose(npimg, (1, 2, 0)))
         
-def plot_history(history):
+def plot_history(history, figname=None):
   lrs = [h[2] for h in history]
   train_loss = [h[0]['train_loss'] for h in history]
   test_loss = [h[1]['test_loss'] for h in history]
@@ -76,3 +76,5 @@ def plot_history(history):
   ax3.set(title='Accuracy over epochs', xlabel='Epoch', ylabel='Accuracy')
 
   plt.show()
+  if figname:
+    fig.savefig(figname)
